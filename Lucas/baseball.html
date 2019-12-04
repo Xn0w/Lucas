@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> baseball</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <h1>HELLO</h1>
+    <h1>PLAY GAME</h1>
+    <script>
+        // Random Code 생성
+        function createCode(play, iLength) {
+            var game = play;
+            var randomStr = "";
+
+            for (var j = 0; j < iLength; j++) {
+                randomStr += game[Math.floor(Math.random() * game.length)];
+            }
+
+            return randomStr
+        }
+
+        // 랜덤문자
+        var count1 = 0;
+        var count2 = 0;
+        var count3 = 0;
+        var count4 = 0;
+
+        function getRandomSpecialLetter(iLength) {
+            var game = "스트라이크,볼,안타,아웃".split(",");
+
+            var rnd = createCode(game, iLength);
+            document.getElementById("divRandom").innerText = rnd;
+            return rnd;
+
+        }
+
+        function Back() {
+            location.href = "Menu.html";
+        }
+        document.write(count1 + "S " + count2 + "B " + count3 + "O " + count4 + "안타");
+
+        function condition() {
+            if (count1 == 3) {
+                count3++;
+                continue;
+            }
+            if (count2 == 4) {
+                alert('안타');
+                count4++;
+                continue;
+            }
+            if(game == "안타" || game == "아웃"){
+                document.write("다음 타자가 타석에 입장했습니다.");
+                continue;
+            }
+            if(count3 == 3){
+                break;
+            }
+        }
+    </script>
+
+
+    <br>Result : <input type="text" id="length" value=1>
+
+    <div>
+        <br><button type="button" value="Push"
+            onclick="getRandomSpecialLetter(document.getElementById('length').value)">click</button>
+        <button type="button" onclick='Back()'>Back</button>
+
+
+    </div>
+
+    <div id=divRandom></div>
+</body>
+
+</html>
